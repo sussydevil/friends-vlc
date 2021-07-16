@@ -24,7 +24,7 @@ def create_configuration():
         config.set("Settings", "Episode", str(1))
         with open(path, "w") as config_file:
             config.write(config_file)
-        print("File created successfully.")
+        print("File creating successfully.")
     return 0
 
 
@@ -36,7 +36,7 @@ def write_configuration(input_season, input_episode):
     config.set("Settings", "Episode", str(input_episode))
     with open(path, "w") as config_file:
         config.write(config_file)
-    print("File write successfully.")
+    print("File writing successfully.")
     return 0
 
 
@@ -55,7 +55,7 @@ def read_configuration():
     except ValueError:
         print("Value error. Exit.")
         exit(1)
-    print("File read successfully.")
+    print("File reading successfully.")
     return read_season, read_episode
 
 
@@ -86,7 +86,7 @@ def main():
     # check for status code (if not 200, then season +=1, if it not works, then serial is finished (just little logic))
     while True:
         if error == 2:
-            print("Changing season is not work. This is the end of serial.")
+            print("Changing season isn't work. This is the end of serial.")
             exit(1)
 
         # reformat data for request
@@ -104,7 +104,7 @@ def main():
             answer = requests.head("http://friends.mp4v.club/Friends.s{0}e{1}.DruzyaSerial.ru.mp4"
                                    .format(season_string, episode_string))
         except requests.ConnectionError:
-            print("Connection error. Exit...")
+            print("Connection error. Exit.")
             exit(1)
 
         # if episode not exists
@@ -117,7 +117,7 @@ def main():
 
         # if bad answer
         if answer.status_code != 200:
-            print("Server returned bad status code: {0}. Exiting...".format(answer.status_code))
+            print("Server returned bad status code: {0}. Exit.".format(answer.status_code))
             exit(1)
         break
 
@@ -128,7 +128,7 @@ def main():
 
     # write next episode to configuration file
     write_configuration(season, episode + 1)
-    print("Configuration file saved.")
+    print("Configuration file saved. | Exit")
     exit(0)
 
 
