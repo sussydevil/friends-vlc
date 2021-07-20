@@ -123,7 +123,7 @@ def main():
 
     # open vlc and play
     print("Episode is OK. Start playing...")
-    os.system('vlc "http://friends.mp4v.club/Friends.s{0}e{1}.DruzyaSerial.ru.mp4" --play-and-exit'
+    os.system('vlc "http://friends.mp4v.club/Friends.s{0}e{1}.DruzyaSerial.ru.mp4" --play-and-exit --fullscreen'
               .format(season_string, episode_string))
 
     # write next episode to configuration file
